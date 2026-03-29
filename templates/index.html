@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCCR Academy Virtual</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#1f2937;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* FONDO */
+.bg-bottom{
+  position:absolute;
+  top:90px;
+  left:0;
+  width:100%;
+  opacity:0.12;
+  z-index:0;
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* HEADER */
+header{
+  background:white;
+  border-bottom:1px solid #eee;
+  height:90px;
+  display:flex;
+  align-items:center;
+  z-index:10;
+  position:relative;
+}
+
+nav{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LOGO */
+.logo img{
+  height:85px;
+}
+
+/* NAV RIGHT */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+/* SEARCH */
+.search{
+  padding:8px 15px;
+  border-radius:20px;
+  border:1px solid #ccc;
+}
+
+/* MENU */
+.menu{
+  display:flex;
+  gap:15px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:#374151;
+  padding:6px 10px;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  background:#f0f4ff;
+  color:#0A4D8C;
+}
+
+/* AUTH */
+.auth a{
+  text-decoration:none;
+  padding:8px 16px;
+  border-radius:20px;
+  transition:0.3s;
+}
+
+/* LOGIN */
+.login{
+  border:1px solid #ccc;
+  color:#374151;
+}
+
+.login:hover{
+  background:#f0f0f0;
+}
+
+/* REGISTER */
+.register{
+  background:#0A4D8C;
+  color:white;
+}
+
+.register:hover{
+  background:#083d6b;
+}
+
+/* HERO */
+.hero{
+  padding:80px 0;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.tag{
+  background:#e0ecff;
+  color:#0A4D8C;
+  padding:8px 14px;
+  border-radius:999px;
+  margin-bottom:15px;
+  display:inline-block;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:#6b7280;
+  margin-bottom:25px;
+}
+
+/* BOTONES */
+.buttons{
+  display:flex;
+  gap:15px;
+}
+
+.btn{
+  padding:14px 26px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:#0A4D8C;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#083d6b;
+  transform:translateY(-2px);
+}
+
+.btn-secondary{
+  border:1px solid #ccc;
+  background:white;
+  color:#0A4D8C;
+}
+
+.btn-secondary:hover{
+  background:#f0f4ff;
+  transform:translateY(-2px);
+}
+
+/* CARD */
+.hero-card{
+  position:relative;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("{{ url_for('static', filename='circulodecolores_cccr.png') }}");
+  background-size:cover;
+  background-position:center;
+  opacity:0.08;
+}
+
+.hero-card *{
+  position:relative;
+  z-index:2;
+}
+
+.titulo-card{
+  text-align:center;
+  margin-bottom:20px;
+  margin-top:-5px;
+}
+
+/* MINI CARD */
+.mini-card{
+  background:#ffffffcc;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:12px;
+  transition:0.3s;
+}
+
+.mini-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* CURSOS */
+section{
+  padding:60px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  margin-bottom:12px;
+}
+
+.section-title p{
+  margin-top:8px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+/* 🔥 CORRECCIÓN AQUÍ */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  transition:0.3s;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* FOOTER */
+footer{
+  background:#0A4D8C;
+  color:white;
+  padding:40px 0;
+  margin-top:40px;
+}
+
+.footer-container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.footer-col{
+  margin-bottom:20px;
+}
+
+.footer-col h4{
+  margin-bottom:10px;
+}
+
+.footer-col a{
+  display:block;
+  color:#ddd;
+  text-decoration:none;
+  margin-bottom:5px;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:20px;
+  font-size:0.9rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="{{ url_for('static', filename='circuloverde_cccr.png') }}" class="bg-bottom">
+
+<header>
+<div class="container">
+<nav>
+
+<div class="logo">
+<img src="{{ url_for('static', filename='logo_cccr.png') }}">
+</div>
+
+<div class="nav-right">
+
+<input type="text" class="search" placeholder="Buscar cursos...">
+
+<div class="menu">
+<a href="#">Cursos</a>
+<a href="#">Beneficios</a>
+<a href="#">Contacto</a>
+</div>
+
+<div class="auth">
+<a href="#" class="login">Inicio de sesión</a>
+<a href="#" class="register">Registro</a>
+</div>
+
+</div>
+
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<span class="tag">Plataforma oficial CCCR</span>
+
+<h1>CCCR Academy Virtual</h1>
+
+<p>
+Plataforma de formación empresarial de la Cámara de Comercio de Costa Rica,
+enfocada en el desarrollo de habilidades estratégicas, tecnológicas y de innovación.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn btn-primary">Explorar cursos</a>
+<a href="#" class="btn btn-secondary">Iniciar Sesión</a>
+</div>
+</div>
+
+<div class="hero-card">
+
+<h3 class="titulo-card">Rutas de aprendizaje</h3>
+
+<div class="mini-card">
+<strong>Transformación digital</strong>
+<p>Adapte su empresa a la nueva era digital.</p>
+</div>
+
+<div class="mini-card">
+<strong>Productividad empresarial</strong>
+<p>Optimización de procesos y herramientas.</p>
+</div>
+
+<div class="mini-card">
+<strong>Innovación y liderazgo</strong>
+<p>Estrategias modernas de gestión.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Programas de formación</h2>
+<p>Capacitaciones diseñadas para fortalecer el crecimiento empresarial.</p>
+</div>
+
+<div class="cards">
+<div class="card">Microsoft Excel</div>
+<div class="card">Técnicas de ventas</div>
+<div class="card">Finanzas</div>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h4>Plataforma</h4>
+<a href="#">Cursos</a>
+<a href="#">Certificados</a>
+<a href="#">Beneficios</a>
+</div>
+
+<div class="footer-col">
+<h4>Soporte</h4>
+<a href="#">Contacto</a>
+<a href="#">Ayuda</a>
+<a href="#">FAQ</a>
+</div>
+
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="#">Privacidad</a>
+<a href="#">Términos</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+Cámara de Comercio de Costa Rica | Plataforma de formación empresarial
+</div>
+
+</footer>
+
+</body>
+</html>
