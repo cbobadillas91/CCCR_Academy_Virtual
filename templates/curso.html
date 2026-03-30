@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso - CCCR Academy</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* FONDO */
+body{
+  background:#f4f7fb;
+  position:relative;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  background: url("{{ url_for('static', filename='alfa_cccr.png') }}");
+  background-size:cover;
+  background-position:center;
+
+  opacity:0.12;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  background:white;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  border-bottom:1px solid #eee;
+}
+
+/* LOGO MÁS GRANDE */
+.logo img{
+  height:85px;
+}
+
+/* LINK ELEGANTE */
+.back-link{
+  text-decoration:none;
+  color:#0A4D8C;
+  font-weight:500;
+  position:relative;
+  transition:0.3s;
+}
+
+.back-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-3px;
+  width:0%;
+  height:2px;
+  background:#0A4D8C;
+  transition:0.3s;
+}
+
+.back-link:hover::after{
+  width:100%;
+}
+
+/* CONTENEDOR */
+.container{
+  width:90%;
+  max-width:1000px;
+  margin:50px auto;
+}
+
+/* TITULO */
+h1{
+  margin-bottom:25px;
+}
+
+/* VIDEO (TAMAÑO ORIGINAL, MÁS COMPACTO) */
+.video{
+  width:100%;
+  height:450px;
+  margin-bottom:25px;
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* DESCRIPCIÓN */
+.descripcion{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:25px;
+}
+
+/* BOTONES */
+.opciones{
+  display:flex;
+  gap:15px;
+}
+
+.btn{
+  padding:12px 25px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:#0A4D8C;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#083d6b;
+}
+
+.btn-secondary{
+  border:1px solid #ccc;
+  color:#0A4D8C;
+  background:white;
+}
+
+.btn-secondary:hover{
+  background:#f0f4ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<img src="{{ url_for('static', filename='logo_cccr.png') }}">
+</div>
+
+<a href="/" class="back-link">Inicio</a>
+
+</header>
+
+<div class="container">
+
+<h1>Microsoft Excel</h1>
+
+<div class="video">
+<iframe 
+src="https://www.youtube.com/embed/B-M5Jr0exEY"
+allowfullscreen>
+</iframe>
+</div>
+
+<div class="descripcion">
+<p>
+En este curso aprenderás desde lo básico hasta funciones avanzadas de Excel
+para mejorar tu productividad en el trabajo.
+</p>
+</div>
+
+<div class="opciones">
+<a href="#" class="btn btn-primary">Completar curso</a>
+<a href="#" class="btn btn-secondary">Descargar material</a>
+</div>
+
+</div>
+
+</body>
+</html>

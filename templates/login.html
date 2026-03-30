@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | CCCR Academy Virtual</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image: url("{{ url_for('static', filename='alfablanco_cccr.png') }}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 1500px;
+            background-color: #f4f6f8;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            z-index: 0;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            width: 380px;
+            text-align: center;
+        }
+
+        /* 🔥 LOGO CENTRADO */
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 270px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .input-group {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            width: 85%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .btn-primary {
+            width: 85%;
+            padding: 12px;
+            background-color: #1a73e8;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #1558b0;
+        }
+
+        .forgot {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .forgot a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .divider {
+            margin: 18px 0;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 🔥 BOTÓN GOOGLE CENTRADO CORRECTO */
+        .google-btn {
+            width: 85%;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+
+            position: relative;
+        }
+
+        .google-btn img {
+            position: absolute;
+            left: 15px;
+            width: 18px;
+        }
+
+        .google-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo_cccr.png') }}" alt="CCCR">
+        </div>
+
+        <h2>Iniciar sesión</h2>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Correo" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
+
+            <button class="btn-primary" type="submit">Ingresar</button>
+
+        </form>
+
+        <div class="forgot">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <div class="divider">o</div>
+
+        <button class="google-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+            Iniciar sesión con Google
+        </button>
+
+    </div>
+
+</body>
+</html>
