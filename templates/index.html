@@ -96,6 +96,17 @@ nav{
 }
 
 /* AUTH */
+.auth{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.auth span{
+  color:#374151;
+  font-size:14px;
+}
+
 .auth a{
   text-decoration:none;
   padding:8px 16px;
@@ -261,25 +272,18 @@ section{
   gap:20px;
 }
 
-/* 🔥 CORRECCIÓN AQUÍ */
 .card{
   background:white;
   padding:20px;
   border-radius:15px;
   box-shadow:0 10px 30px rgba(0,0,0,0.05);
   transition:0.3s;
-
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-
-  text-decoration:none;   /* 🔥 QUITA subrayado */
-  color:#1f2937;          /* 🔥 color normal */
-}
-
-.card:hover{
-  transform:translateY(-5px);
+  text-decoration:none;
+  color:#1f2937;
 }
 
 .card:hover{
@@ -347,11 +351,14 @@ footer{
 <a href="#">Cursos</a>
 <a href="#">Beneficios</a>
 <a href="#">Contacto</a>
+{% if session['role'] == 'admin' %}
+<a href="/crear_usuario">Crear usuarios</a>
+{% endif %}
 </div>
 
 <div class="auth">
-<a href="#" class="login">Inicio de sesión</a>
-<a href="#" class="register">Registro</a>
+<span>{{ session['name'] }}</span>
+<a href="/logout" class="login">Cerrar sesión</a>
 </div>
 
 </div>
@@ -377,7 +384,7 @@ enfocada en el desarrollo de habilidades estratégicas, tecnológicas y de innov
 
 <div class="buttons">
 <a href="#" class="btn btn-primary">Explorar cursos</a>
-<a href="#" class="btn btn-secondary">Iniciar Sesión</a>
+<a href="/curso" class="btn btn-secondary">Ir al curso</a>
 </div>
 </div>
 

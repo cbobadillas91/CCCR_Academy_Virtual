@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear usuario | CCCR Academy Virtual</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* 🔥 FONDO CON ISOTIPO */
+            background-image: url("{{ url_for('static', filename='isotipo_cccr.png') }}");
+            background-repeat: no-repeat;
+            background-position: center 80%;
+            background-size: 2100px;
+            background-color: #f4f6f8;
+        }
+
+        /* capa blanca suave */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            z-index: 0;
+        }
+
+        /* 🔥 CONTENEDOR CENTRADO */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 420px;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 85%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        button {
+            width: 85%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #1a73e8;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1558b0;
+        }
+
+        .mensaje-error {
+            background: #fdecec;
+            color: #b42318;
+            border: 1px solid #f5c2c7;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .mensaje-exito {
+            background: #ecfdf3;
+            color: #027a48;
+            border: 1px solid #a6f4c5;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .volver {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #1a73e8;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Crear usuario</h2>
+
+        {% if error %}
+            <div class="mensaje-error">{{ error }}</div>
+        {% endif %}
+
+        {% if exito %}
+            <div class="mensaje-exito">{{ exito }}</div>
+        {% endif %}
+
+        <form method="POST">
+
+            <!-- 🔥 NUEVO CAMPO NOMBRE -->
+            <input type="text" name="name" placeholder="Nombre completo" required>
+
+            <input type="email" name="email" placeholder="Correo" required>
+
+            <input type="password" name="password" placeholder="Contraseña" required>
+
+            <select name="role" required>
+                <option value="user">Usuario</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <button type="submit">Crear usuario</button>
+
+        </form>
+
+        <a href="/" class="volver">Volver al inicio</a>
+
+    </div>
+
+</body>
+</html>
